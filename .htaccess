@@ -1,0 +1,94 @@
+<IfModule mod_rewrite.c>
+    
+	#Bloquear listagem
+	Options -Indexes
+
+	Options +FollowSymLinks
+	RewriteEngine on
+
+	DefaultLanguage pt-BR
+	AddDefaultCharset UTF-8
+
+	
+
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f
+
+
+
+	#VIEWS**************************************************************
+
+	RewriteRule ^home?$ views/menu_home/administracao.php [L,QSA]
+	RewriteRule ^acesso?$ index.php?logout=1 [L,QSA]
+	RewriteRule ^logout?$ controlers/login/logout.php [L,QSA]
+
+
+	RewriteRule ^imprime-locacao/(.*)?$ views/menu_relatorios/imprime-locacao.php?id=$1 [L,QSA]
+	
+	RewriteRule ^clientes?$ views/menu_cadastros/cadastro01.php [L,QSA]
+	RewriteRule ^novo-cadastro?$ views/menu_cadastros/novo-cadastro.php [L,QSA]
+	RewriteRule ^clientes/edit/(.*)?$ views/menu_cadastros/novo-cadastro.php?id=$1 [L,QSA]
+
+	RewriteRule ^novo-lancamento/(.*)?$ views/menu_cadastros/novo-lancamento.php?id=$1 [L,QSA]
+
+
+	RewriteRule ^descarte?$ views/menu_cadastros/descarte.php [L,QSA]
+	RewriteRule ^novo-descarte?$ views/menu_cadastros/novo-descarte.php [L,QSA]
+	RewriteRule ^descarte/edit/(.*)?$ views/menu_cadastros/novo-descarte.php?id=$1 [L,QSA]
+
+	RewriteRule ^regioes?$ views/menu_cadastros/regioes.php [L,QSA]
+	RewriteRule ^nova-regiao?$ views/menu_cadastros/nova-regiao.php [L,QSA]
+	RewriteRule ^regioes/edit/(.*)?$ views/menu_cadastros/nova-regiao.php?id=$1 [L,QSA]
+
+	RewriteRule ^cidades?$ views/menu_cadastros/cidades.php [L,QSA]
+	RewriteRule ^nova-cidade?$ views/menu_cadastros/nova-cidade.php [L,QSA]
+	RewriteRule ^cidades/edit/(.*)?$ views/menu_cadastros/nova-cidade.php?id=$1 [L,QSA]
+	
+	RewriteRule ^cacambas?$ views/menu_cadastros/cacambas.php [L,QSA]
+	RewriteRule ^nova-cacamba?$ views/menu_cadastros/nova-cacamba.php [L,QSA]
+	RewriteRule ^cacambas/edit/(.*)?$ views/menu_cadastros/nova-cacamba.php?id=$1 [L,QSA]
+
+	RewriteRule ^motoristas?$ views/menu_cadastros/motoristas.php [L,QSA]
+	RewriteRule ^novo-motorista?$ views/menu_cadastros/novo-motorista.php [L,QSA]
+	RewriteRule ^motoristas/edit/(.*)?$ views/menu_cadastros/novo-motorista.php?id=$1 [L,QSA]
+
+	RewriteRule ^veiculos?$ views/menu_cadastros/veiculos.php [L,QSA]
+	RewriteRule ^novo-veiculo?$ views/menu_cadastros/novo-veiculo.php [L,QSA]
+	RewriteRule ^veiculos/edit/(.*)?$ views/menu_cadastros/novo-veiculo.php?id=$1 [L,QSA]
+
+	RewriteRule ^tipo-cacamba?$ views/menu_cadastros/tipo-cacamba.php [L,QSA]
+	RewriteRule ^novo-tipo-cacamba?$ views/menu_cadastros/novo-tipo-cacamba.php [L,QSA]
+	RewriteRule ^tipo-cacamba/edit/(.*)?$ views/menu_cadastros/novo-tipo-cacamba.php?id=$1 [L,QSA]
+
+	RewriteRule ^cacamba?$ views/menu_cadastros/cacamba.php [L,QSA]
+	RewriteRule ^nova-cacamba?$ views/menu_cadastros/nova-cacamba.php [L,QSA]
+	RewriteRule ^cacamba/edit/(.*)?$ views/menu_cadastros/nova-cacamba.php?id=$1 [L,QSA]
+
+
+	RewriteRule ^locacoes-servicos?$ views/menu_servicos/locacoes-servicos.php [L,QSA]
+	RewriteRule ^nova-locacao?$ views/menu_servicos/nova-locacao.php [L,QSA]
+	RewriteRule ^nova-locacao-cliente/(.*)?$ views/menu_servicos/nova-locacao.php?cliente=$1 [L,QSA]
+
+
+	RewriteRule ^locacoes/edit/(.*)?$ views/menu_servicos/nova-locacao.php?id=$1 [L,QSA]
+	RewriteRule ^locacoes/edit-loc-cli/(.*)/(.*)?$ views/menu_servicos/nova-locacao.php?id=$1&cliente=$2 [L,QSA]
+	RewriteRule ^retirada/(.*)?$ views/menu_servicos/retira-locacao.php?id=$1 [L,QSA]
+	RewriteRule ^retirada-loc-cli/(.*)/(.*)?$ views/menu_servicos/retira-locacao.php?id=$1&cliente=$2 [L,QSA]
+
+
+	RewriteRule ^reativar/(.*)?$ controlers/servicos/reativa-locacao.php?id=$1 [L,QSA]
+	RewriteRule ^reativar-loc-cli/(.*)/(.*)?$ controlers/servicos/reativa-locacao.php?id=$1&cliente=$2 [L,QSA]
+
+	
+
+	RewriteRule ^locacoes-agendadas?$ views/menu_servicos/locacoes-agendadas.php [L,QSA]
+	RewriteRule ^locacoes-concluidas?$ views/menu_servicos/locacoes-concluidas.php [L,QSA]
+
+
+	RewriteRule ^relatorios?$ views/menu_relatorios/relatorios.php [L,QSA]
+	RewriteRule ^relatorios-retiradas?$ views/menu_relatorios/relatorios-retiradas.php [L,QSA]
+
+	RewriteRule ^transportes?$ views/menu_relatorios/transportes.php [L,QSA]
+	RewriteRule ^kpi?$ views/menu_relatorios/kpi.php [L,QSA]
+
+</IfModule>
